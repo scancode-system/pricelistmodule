@@ -1,4 +1,5 @@
 <hr>
+<h4>Preços Tabelado</h4>
 {{ Form::open(['route' => 'pricelistproduct.store']) }}
 {{ Form::hidden('product_id', $product->id) }}
 <div class="row">
