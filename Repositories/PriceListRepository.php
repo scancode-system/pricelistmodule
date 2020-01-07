@@ -8,6 +8,10 @@ class PriceListRepository
 {
 
 	// LOAD
+	public static function loadByName($name){
+		return PriceList::where('name', $name)->first();
+	}
+
 	public static function loadById($id){
 		return PriceList::find($id);
 	}
@@ -19,8 +23,8 @@ class PriceListRepository
 
 	// SAVE
 	public static function store($data){
-		PriceList::create($data);
+		return PriceList::create($data);
 	}
- 
+
 
 }

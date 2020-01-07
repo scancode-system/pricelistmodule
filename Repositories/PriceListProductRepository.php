@@ -3,6 +3,7 @@
 namespace Modules\PriceList\Repositories;
 
 use Modules\PriceList\Entities\PriceListProduct;
+use Modules\Product\Entities\Product;
 
 class PriceListProductRepository
 {
@@ -27,5 +28,13 @@ class PriceListProductRepository
 		$price_list_product->delete();
 	}
  
+ 	// DESTROY
+	public static function destroyAllByProduct(Product $product)
+	{
+		$price_list_products = $product->price_list_products;
+		foreach ($price_list_products as $price_list_product) {
+			$price_list_product->delete();
+		}
+	}
 
 }
