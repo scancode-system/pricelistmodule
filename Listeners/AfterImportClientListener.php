@@ -26,14 +26,18 @@ class AfterImportClientListener
      */
     public function handle($event)
     {
-        $price_list_name = ($event->data())['price_list_name'];
-        $price_list = PriceListRepository::loadByName($price_list_name);
+        $data = $event->data();
 
-        if($price_list)
-        {
-            $client = $event->client();
-            $client->price_lists()->detach();
-            $client->price_lists()->attach($price_list);
+        if(isset($data['price_list_name'])){
+            $price_list_name = $data['price_list_name'];
+            $price_list = PriceListRepository::loadByName($price_list_name);
+
+            if($price_list)
+            {
+                $client = $event->client();
+                $client->price_lists()->detach();
+                $client->price_lists()->attach($price_list);
+            }
         }
 
     }
