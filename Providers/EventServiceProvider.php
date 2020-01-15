@@ -8,6 +8,8 @@ use Modules\Client\Events\AfterImportEvent;
 use Modules\Product\Events\AfterImportEvent as AfterImportProduct;
 use Modules\PriceList\Listeners\AfterImportClientListener;
 use Modules\PriceList\Listeners\AfterImportProductListener;
+use Modules\Product\Events\ProductLazyEagerLoadingEvent;
+use Modules\PriceList\Listeners\ProductLazyEagerLoadingListener;
 
 class EventServiceProvider extends ServiceProvider 
 {
@@ -21,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
 	{
 		Event::listen(AfterImportProduct::class, AfterImportProductListener::class);
 		Event::listen(AfterImportEvent::class, AfterImportClientListener::class);
+		Event::listen(ProductLazyEagerLoadingEvent::class, ProductLazyEagerLoadingListener::class);
 	}
 
 }
